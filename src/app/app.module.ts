@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    CookieService,
   ],
   bootstrap: [AppComponent]
 })
