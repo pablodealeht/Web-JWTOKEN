@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptor } from './AuthInterceptor';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AuthInterceptor } from './AuthInterceptor';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatIconModule,
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true},
