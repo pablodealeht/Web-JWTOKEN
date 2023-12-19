@@ -1,9 +1,9 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../Servicios/auth.service';
 import { Router } from '@angular/router';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../../Servicios/users.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

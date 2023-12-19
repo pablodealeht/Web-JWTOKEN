@@ -1,0 +1,22 @@
+<!-- rangofechas.component.html -->
+<div>
+    <button (click)="fetchData()">Obtener Datos</button>
+</div>
+<div *ngIf="data.length > 0">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <!-- Agrega más columnas según los datos que obtengas -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data">
+                <td>{{ item.id }}</td>
+                <td>{{ item.fecha }}</td>
+                <!-- Agrega más columnas según los datos que obtengas -->
+            </tr>
+        </tbody>
+    </table>
+</div>

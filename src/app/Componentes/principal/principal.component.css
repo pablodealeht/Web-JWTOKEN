@@ -14,19 +14,12 @@
     transition: min-width 0.5s;
     overflow-x: hidden;
     /* Evita desbordamiento horizontal */
+    position: relative;
 }
 
 .sidebar.open {
     min-width: 250px;
     /* Ancho cuando está expandido */
-}
-
-.menu-content {
-    display: none;
-}
-
-.sidebar.open .menu-content {
-    display: block;
 }
 
 .toggle-menu {
@@ -41,14 +34,32 @@
     left: 0;
 }
 
-.sidebar a {
+.menu-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    /* Alinea el menú desplegable a la derecha del botón de menú */
+    background-color: #333;
     color: white;
-    text-decoration: none;
-    padding: 33px;
+    min-width: 200px;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.sidebar.open .menu-content {
     display: block;
 }
 
-.sidebar a:hover {
+.menu-content a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.menu-content a:hover {
     background-color: #575757;
 }
 
@@ -57,7 +68,7 @@
 
 .content {
     flex-grow: 1;
-    padding: 50px;
+    padding: 20px;
     overflow-y: auto;
     /* Permite desplazamiento vertical si es necesario */
 }
@@ -87,7 +98,8 @@
     color: white;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 1000;
+    /* Asegúrate de que el menú desplegable esté por encima de otros elementos */
 }
 
 .user-profile .dropdown-content a {
