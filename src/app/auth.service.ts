@@ -14,5 +14,8 @@ login(user:string , password : string): Observable<any> {
   const body = JSON.stringify({ user: user, password: password});
   return this.http.post<any>(this.authUrl, body, {headers : headers});
 }
+saveToken(token : string) : void{
+  localStorage.setItem('auth_token', token)
+}
 
 }

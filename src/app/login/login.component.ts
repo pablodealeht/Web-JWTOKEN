@@ -97,6 +97,7 @@ export class LoginComponent {
 
   login(user : string, password : string) {
     this.authService.login(user, password).subscribe(data => {
+      this.authService.saveToken(data.token);
       console.log('Login exitoso', data);
       //manejo de la resp exitosa
 
