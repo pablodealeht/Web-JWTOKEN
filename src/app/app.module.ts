@@ -9,11 +9,16 @@ import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptor } from './AuthInterceptor';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PrincipalComponent } from './principal/principal.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    PrincipalComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +26,9 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     FormsModule,
     MatIconModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi: true},

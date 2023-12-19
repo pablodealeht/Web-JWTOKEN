@@ -1,0 +1,33 @@
+<div class="main-container">
+
+    <!-- Menú Lateral -->
+    <nav class="sidebar" [ngClass]="{'open': isSidebarOpen}">
+        <button class="toggle-menu" (click)="toggleSidebar()">☰</button>
+        <div class="menu-content">
+            <!-- Contenido del menú lateral aquí -->
+            <a href="#">Ejemplo 1</a>
+            <a href="#">Ejemplo 2</a>
+            <!-- Más enlaces del menú aquí -->
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="content">
+        <!-- Perfil de Usuario y Menú Superior Derecho -->
+        <div class="user-profile-container">
+            <div class="user-profile">
+                <button class="dropdown-button">{{username}}</button>
+                <div class="dropdown-content">
+                    <a href="#">Panel de Usuario</a>
+                    <a href="#">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h1>Bienvenido, {{username}}</h1>
+            <!-- <app-mi-componente></app-mi-componente> -->
+            <!-- Ejemplo de integración de otro componente -->
+        </div>
+    </div>
+</div>

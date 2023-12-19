@@ -1,18 +1,18 @@
-<div class="login-container" [@fadeIn]>
-    <mat-form-field appearance="fill">
-        <mat-label>Usuario</mat-label>
-        <input matInput type="text" #user>
-    </mat-form-field>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <mat-form-field appearance="fill">
-        <mat-label>Contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" #password>
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" (click)="login(user.value, password.value)">
-      Iniciar Sesión
-  </button>
+<div class="login-wrapper">
+    <div class="login-box">
+        <h1>Iniciar Sesión</h1>
+        <div class="input-group">
+            <input type="text" #user placeholder="E-mail" required>
+        </div>
+        <div class="input-group">
+            <input [type]="hide ? 'password' : 'text'" #password placeholder="Contraseña" required>
+            <button class="toggle-password" (click)="hide = !hide">
+              <span class="material-icons">{{ hide ? 'visibility_off' : 'visibility' }}</span>
+          </button>
+            <div *ngIf="showError" class="error-message">Validación incorrecta</div>
+        </div>
+        <button (click)="login(user.value, password.value)" class="login-btn">Acceder</button>
+    </div>
 </div>
