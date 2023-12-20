@@ -1,5 +1,6 @@
 <div class="main-container">
 
+
     <!-- Menú Lateral -->
     <nav class="sidebar" [ngClass]="{'open': isSidebarOpen}">
         <button class="toggle-menu" (click)="toggleSidebar()">☰</button>
@@ -16,7 +17,7 @@
         <!-- Perfil de Usuario y Menú Superior Derecho -->
         <div class="user-profile-container">
             <div class="user-profile" *ngIf="isAuthenticated()">
-                <button class="dropdown-button">{{ username }}</button>
+                <button class="dropdown-button">Bienvenido, {{ username }}</button>
                 <div class="dropdown-content">
                     <a href="#">Panel de Usuario</a>
                     <a href="#" (click)="showChangePasswordForm()">Cambiar Contraseña</a>
@@ -26,7 +27,7 @@
         </div>
 
         <div>
-            <h1>Bienvenido, {{username}}</h1>
+            <h1 class="textos">Bienvenido, {{username}}</h1>
             <app-abm-test></app-abm-test>
             <!-- Ejemplo de integración de otro componente -->
         </div>
