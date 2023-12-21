@@ -1,5 +1,4 @@
-import { Component, OnInit,Inject, PLATFORM_ID } from '@angular/core';
-import { UsersService } from '../../Servicios/users.service';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../../Servicios/auth.service';
 import { Router } from '@angular/router';
 import { MenuService } from '../../Servicios/menu.service';
@@ -23,20 +22,36 @@ export class PrincipalComponent implements OnInit {
 
 
   constructor(
-    private usersService: UsersService,
     private authService: AuthService,
     private router: Router,
     private menuService: MenuService,
     @Inject(PLATFORM_ID) private platformId: Object
-    ) { }
+  ) { }
 
-  showAbmTest(): void {
-    this.currentView = 'AbmTest';
+  ngOnInit() {
+    // Aquí aseguramos que el código solo se ejecutará en el navegador
+    if (isPlatformBrowser(this.platformId)) {
+      this.loadUserFromLocalStorage();
+      //Ejemplo de uso de perfil
+      const userProfile = Perfil.Administrador;
+      this.menuItems = this.menuService.getMenusForProfile(userProfile);
     }
+  }
+
+  private loadUserFromLocalStorage() {
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (usuarioGuardado) {
+      const usuario = JSON.parse(usuarioGuardado);
+      this.username = usuario.username;
+    } else {
+      this.authService.logout();
+      this.router.navigate(['/login']);
+    }
+  }
 
   // Comprueba si el usuario está autenticado
   isAuthenticated(): boolean {
-    return this.authService.getIsAuthenticated();
+    return this.authService.isAuthenticated();
   }
 
   showChangePasswordForm() {
@@ -50,30 +65,15 @@ export class PrincipalComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    // Aquí aseguramos que el código solo se ejecutará en el navegador
-    if (isPlatformBrowser(this.platformId)) {
-      this.username = this.usersService.getUsername();
-      console.log('Usuario: ', this.username);
-
-      //Ejemplo de uso de perfil
-      const userProfile = Perfil.Administrador;
-      this.menuItems = this.menuService.getMenusForProfile(userProfile);
-
-      // Redirige al componente de login si no está validado el usuario
-      if (!this.username) {
-        this.authService.logout();
-        this.router.navigate(['/login']);
-      }
-    }
-  }
-
-
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
   toggleUserMenu() {
     this.isUserMenuOpen = !this.isUserMenuOpen;
+  }
+
+  showAbmTest(): void {
+    this.currentView = 'AbmTest';
   }
 }

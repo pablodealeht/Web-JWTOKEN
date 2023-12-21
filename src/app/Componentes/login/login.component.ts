@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../Servicios/auth.service';
 import { Router } from '@angular/router';
 import { UsersService } from '../../Servicios/users.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,8 +18,6 @@ import { UsersService } from '../../Servicios/users.service';
     ]),
   ]
 })
-
-
 export class LoginComponent {
   user: string = '';
   password: string = '';
@@ -35,17 +34,16 @@ export class LoginComponent {
   login(user: string, password: string) {
     this.authService.login(user, password).subscribe(data => {
       this.authService.saveToken(data.token);
+      localStorage.setItem('usuario', JSON.stringify({ username: user })); // Guardar el nombre de usuario en localStorage
       this.userService.setUsername(user);
       console.log('Nombre de usuario establecido:', this.userService.getUsername());
       this.router.navigate(['/principal']);
       console.log('Login exitoso', data);
-
     },
-      error => {
-        console.error('User: ', user)
-        this.showError = true;
-        console.error('Error en login', error)
-      }
-    );
+    error => {
+      console.error('User: ', user)
+      this.showError = true;
+      console.error('Error en login', error)
+    });
   }
 }
