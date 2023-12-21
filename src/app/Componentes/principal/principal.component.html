@@ -5,9 +5,12 @@
     <nav class="sidebar" [ngClass]="{'open': isSidebarOpen}">
         <button class="toggle-menu" (click)="toggleSidebar()">☰</button>
         <div class="menu-content">
-            <a href="#">Ejemplo 1</a>
-            <a href="#">Ejemplo 2</a>
             <!-- Más enlaces del menú aquí -->
+            <ul>
+                <li *ngFor="let item of menuItems">
+                    <a (click)="showAbmTest()">{{ item.name }}</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -28,8 +31,10 @@
 
         <div>
             <h1 class="textos">Bienvenido, {{username}}</h1>
-            <app-abm-test></app-abm-test>
+            <app-abm-test *ngIf="currentView === 'AbmTest'"></app-abm-test>
             <!-- Ejemplo de integración de otro componente -->
         </div>
     </div>
+
+    <a id="back-top" href='#top'>Volver</a>
 </div>

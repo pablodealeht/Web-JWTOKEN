@@ -3,18 +3,21 @@
 .main-container {
     display: flex;
     height: 100vh;
-    background: #000000;
+    background: #F5F5F5;
+    /* Fondo claro */
 }
 
 .textos {
-    color: #f1f1f1;
+    color: #333;
+    /* Texto oscuro para mejor lectura */
 }
 
 .sidebar {
     min-width: 50px;
     /* Ancho mínimo cuando está colapsado */
     height: 100%;
-    background-color: #091d24;
+    background-color: #39416d;
+    /* Fondo oscuro, pero no puro negro */
     color: white;
     transition: min-width 0.5s;
     overflow-x: hidden;
@@ -45,7 +48,8 @@
     top: 0;
     left: 50px;
     /* Alinea el menú desplegable a la derecha del botón de menú */
-    background-color: #be6969;
+    background-color: #4A4A4A;
+    /* Color de fondo suave */
     color: white;
     min-width: 200px;
     height: 100%;
@@ -62,10 +66,15 @@
     text-decoration: none;
     padding: 10px;
     display: block;
+    transition: background-color 0.3s, border-radius 0.3s;
+    /* Agrega transiciones suaves */
 }
 
 .menu-content a:hover {
-    background-color: #575757;
+    background-color: #5C5C5C;
+    /* Color más claro en hover */
+    border-radius: 8px;
+    /* Esquinas redondeadas */
 }
 
 
@@ -88,7 +97,8 @@
 }
 
 .user-profile .dropdown-button {
-    background-color: #39416d;
+    background-color: #50597B;
+    /* Tono más claro que el sidebar */
     color: white;
     padding: 10px;
     border: none;
@@ -99,10 +109,12 @@
     display: none;
     position: absolute;
     right: 0;
-    background-color: #292727;
+    background-color: #656565;
+    /* Color suave para el menú desplegable */
     color: white;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* Sombra más suave */
     z-index: 1000;
     /* Asegúrate de que el menú desplegable esté por encima de otros elementos */
 }
@@ -119,6 +131,32 @@
 }
 
 .user-profile .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #787878;
+    /* Color más claro en hover para el menú desplegable */
     color: black;
+}
+
+
+/* Scroll automático */
+
+#back-top {
+    margin-top: 105vh;
+    position: sticky;
+    bottom: 32px;
+    left: 32px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#back-top {
+    padding: 10px;
+    background: white;
+    border-radius: 1000px;
+    box-shadow: 0 0 10px #00000035;
+    background: #09f;
+    /* Considera un color más suave o mantenerlo para un toque de color */
+    color: #fff;
+    text-decoration: none;
 }
